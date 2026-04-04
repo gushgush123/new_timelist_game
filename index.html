@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时间轴挑战 · 新闻排序游戏</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/ui/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">时间轴<span>挑战</span></div>
+  <div class="header-meta">
+    <div class="timer-display" id="timerDisplay">00:00</div>
+    <button class="btn btn-outline" onclick="showLeaderboard()">排行榜</button>
+    <button class="btn btn-outline" onclick="showHome()">主菜单</button>
+  </div>
+</header>
+
+<!-- HOME SCREEN -->
+<div id="home-screen" class="screen active">
+  <div class="home-inner">
+    <div class="home-eyebrow">新闻历史游戏</div>
+    <h1 class="home-title">排列历史<br>还原真相</h1>
+    <p class="home-subtitle">将随机打乱的重大新闻事件按照正确的时间顺序拖拽排列，<br>考验你对历史的掌握程度。</p>
+
+    <div class="difficulty-grid">
+      <div class="diff-card selected" onclick="selectDifficulty(this,'easy')">
+        <div class="diff-label">Level 01</div>
+        <div class="diff-name">简单</div>
+        <div class="diff-desc">5条新闻<br>适合初次体验</div>
+        <div class="diff-badge">5 EVENTS</div>
+      </div>
+      <div class="diff-card" onclick="selectDifficulty(this,'medium')">
+        <div class="diff-label">Level 02</div>
+        <div class="diff-name">中等</div>
+        <div class="diff-desc">8条新闻<br>需要一定历史知识</div>
+        <div class="diff-badge">8 EVENTS</div>
+      </div>
+      <div class="diff-card" onclick="selectDifficulty(this,'hard')">
+        <div class="diff-label">Level 03</div>
+        <div class="diff-name">困难</div>
+        <div class="diff-desc">12条新闻<br>历史达人的考验</div>
+        <div class="diff-badge">12 EVENTS</div>
+      </div>
+    </div>
+
+    <div class="home-actions">
+      <button class="btn btn-gold btn-lg" onclick="startGame()">
+        开始游戏 →
+      </button>
+      <button class="btn btn-outline" onclick="showLeaderboard()">查看排行榜</button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div id="game-screen" class="screen">
+  <div class="game-info-bar">
+    <div class="game-stat">
+      <span class="game-stat-label">难度</span>
+      <span class="game-stat-value" id="diffLabel">简单</span>
+    </div>
+    <div class="game-stat">
+      <span class="game-stat-label">计时</span>
+      <span class="game-stat-value timer-display active" id="gameTimer">00:00</span>
+    </div>
+    <div class="game-stat">
+      <span class="game-stat-label">新闻数</span>
+      <span class="game-stat-value" id="cardCount">5</span>
+    </div>
+    <div class="game-stat">
+      <span class="game-stat-label">尝试</span>
+      <span class="game-stat-value" id="attemptCount">0</span>
+    </div>
+  </div>
+
+  <div class="instruction-banner">
+    📰 拖拽卡片，按照从最早到最近的时间顺序排列新闻事件 · 完成后点击"提交答案"验证
+  </div>
+
+  <div class="timeline-container">
+    <div class="timeline-axis"></div>
+    <ul class="timeline-list" id="timelineList"></ul>
+  </div>
+
+  <div class="game-actions">
+    <button class="btn btn-gold btn-lg" onclick="submitAnswer()">提交答案 ✓</button>
+    <div class="dropdown">
+      <button class="btn btn-outline btn-lg" onclick="toggleMenu()">更多</button>
+      <div id="moreMenu" class="dropdown-content">
+        <button onclick="resetOrder()">重置顺序</button>
+        <button onclick="revealAll()">显示答案</button>
+        <button onclick="showHome()">退出游戏</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-bar" id="resultBar">
+    <div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-msg" id="resultMsg"></div>
+    </div>
+    <div class="result-actions">
+      <button class="btn btn-gold" onclick="startGame()">再来一局</button>
+      <button class="btn btn-outline" onclick="revealAll()">显示全部答案</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD SCREEN -->
+<div id="leaderboard-screen" class="screen">
+  <div class="lb-inner">
+    <div class="lb-title">排行榜</div>
+    <div class="lb-subtitle">历史高分记录 · 基于准确率与完成时间综合评分</div>
+    <div class="lb-tabs">
+      <div class="lb-tab active" onclick="switchLbTab(this,'easy')">简单</div>
+      <div class="lb-tab" onclick="switchLbTab(this,'medium')">中等</div>
+      <div class="lb-tab" onclick="switchLbTab(this,'hard')">困难</div>
+    </div>
+    <table class="lb-table">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>评分</th>
+          <th>准确率</th>
+          <th>时间</th>
+          <th>日期</th>
+        </tr>
+      </thead>
+      <tbody id="lbBody"></tbody>
+    </table>
+    <div class="lb-actions">
+      <button class="btn btn-outline" onclick="showHome()">← 返回主菜单</button>
+      <button class="btn btn-red" onclick="clearLeaderboard()">清除记录</button>
+    </div>
+  </div>
+</div>
+
+<!-- DRAG GHOST -->
+<div id="drag-ghost"></div>
+
+<!-- VICTORY MODAL -->
+<div class="modal-overlay" id="victoryModal">
+  <div class="modal-box">
+    <div class="modal-icon" id="modalIcon">🏆</div>
+    <div class="modal-title" id="modalTitle">完美！</div>
+    <div class="modal-subtitle" id="modalSubtitle"></div>
+    <div class="modal-stats">
+      <div class="modal-stat">
+        <div class="modal-stat-label">准确率</div>
+        <div class="modal-stat-value" id="modalAccuracy">100%</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">用时</div>
+        <div class="modal-stat-value" id="modalTime">00:00</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">综合评分</div>
+        <div class="modal-stat-value" id="modalScore">—</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">难度</div>
+        <div class="modal-stat-value" id="modalDiff">简单</div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-gold" onclick="closeModal();startGame()">再来一局</button>
+      <button class="btn btn-outline" onclick="closeModal();showLeaderboard()">查看排行榜</button>
+    </div>
+  </div>
+</div>
+
+<script src="src/core/state.js"></script>
+<script src="src/data/news_db.js"></script>
+<script src="src/utils/helpers.js"></script>
+<script src="src/utils/storage.js"></script>
+<script src="src/ui/renderer.js"></script>
+<script src="src/ui/drag-drop.js"></script>
+<script src="src/core/game.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
