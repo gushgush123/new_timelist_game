@@ -10,13 +10,16 @@ GameApp.state = {
   difficulty: 'easy',
   diffConfig: { easy: 5, medium: 8, hard: 12 },
   diffLabels: { easy: '简单', medium: '中等', hard: '困难' },
+  selectedCategories: [],
   currentCards: [],
   correctOrder: [],
   timerInterval: null,
   seconds: 0,
   attempts: 0,
   submitted: false,
-  lbTab: 'easy'
+  lbTab: 'easy',
+  easterEggMode: false,
+  animationSpeed: 1
 };
 
 /**

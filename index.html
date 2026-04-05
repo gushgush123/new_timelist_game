@@ -14,34 +14,46 @@
 <!-- HEADER -->
 <header>
   <div class="logo">时间轴<span>挑战</span></div>
-  <div class="header-meta">
+  <div class="headline-ticker" id="headlineTicker" aria-live="polite">
+    <div class="headline-line" id="headlineLine"><span></span></div>
+  </div>
+  <div class="header-meta" id="headerActions">
     <div class="timer-display" id="timerDisplay">00:00</div>
-    <button class="btn btn-outline" onclick="showLeaderboard()">排行榜</button>
-    <button class="btn btn-outline" onclick="showHome()">主菜单</button>
+    <!-- 动态注入按钮 -->
   </div>
 </header>
 
 <!-- HOME SCREEN -->
 <div id="home-screen" class="screen active">
+  <div class="scroll-bg-container" id="scrollBgContainer">
+    <!-- 5 rows of scrolling photos will be injected here via JS -->
+  </div>
+  
+  <!-- Scroll Hint -->
+  <div class="scroll-hint" id="scrollHint">
+    <div class="mouse"></div>
+    <span>向下滚动以聚焦历史</span>
+  </div>
+
   <div class="home-inner">
     <div class="home-eyebrow">新闻历史游戏</div>
     <h1 class="home-title">排列历史<br>还原真相</h1>
     <p class="home-subtitle">将随机打乱的重大新闻事件按照正确的时间顺序拖拽排列，<br>考验你对历史的掌握程度。</p>
 
     <div class="difficulty-grid">
-      <div class="diff-card selected" onclick="selectDifficulty(this,'easy')">
+      <div class="diff-card selected" data-diff="easy">
         <div class="diff-label">Level 01</div>
         <div class="diff-name">简单</div>
         <div class="diff-desc">5条新闻<br>适合初次体验</div>
         <div class="diff-badge">5 EVENTS</div>
       </div>
-      <div class="diff-card" onclick="selectDifficulty(this,'medium')">
+      <div class="diff-card" data-diff="medium">
         <div class="diff-label">Level 02</div>
         <div class="diff-name">中等</div>
         <div class="diff-desc">8条新闻<br>需要一定历史知识</div>
         <div class="diff-badge">8 EVENTS</div>
       </div>
-      <div class="diff-card" onclick="selectDifficulty(this,'hard')">
+      <div class="diff-card" data-diff="hard">
         <div class="diff-label">Level 03</div>
         <div class="diff-name">困难</div>
         <div class="diff-desc">12条新闻<br>历史达人的考验</div>
@@ -49,11 +61,16 @@
       </div>
     </div>
 
-    <div class="home-actions">
-      <button class="btn btn-gold btn-lg" onclick="startGame()">
-        开始游戏 →
-      </button>
-      <button class="btn btn-outline" onclick="showLeaderboard()">查看排行榜</button>
+    <div class="category-panel" id="categoryPanel" aria-label="新闻类别选择">
+      <div class="category-header">
+        <div class="category-title">选择类别</div>
+      </div>
+      <div class="category-chips" id="categoryChips"></div>
+      <div class="category-status" id="categoryStatus" aria-live="polite"></div>
+    </div>
+
+    <div class="home-actions" id="homeActions">
+      <!-- 动态注入按钮 -->
     </div>
   </div>
 </div>
@@ -84,6 +101,17 @@
   </div>
 
   <div class="timeline-container">
+    <div class="timeline-indicators">
+      <button class="indicator-arrow up" onclick="sortOldestFirst()" aria-label="最古老排序在顶部">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        <span class="indicator-label">最古老</span>
+      </button>
+      <div class="indicator-line"></div>
+      <button class="indicator-arrow down" onclick="sortNewestFirst()" aria-label="最新鲜排序在底部">
+        <span class="indicator-label">最新鲜</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
+    </div>
     <div class="timeline-axis"></div>
     <ul class="timeline-list" id="timelineList"></ul>
   </div>
@@ -129,6 +157,7 @@
           <th>评分</th>
           <th>准确率</th>
           <th>时间</th>
+          <th>类别</th>
           <th>日期</th>
         </tr>
       </thead>
@@ -177,8 +206,10 @@
 
 <script src="src/core/state.js"></script>
 <script src="src/data/news_db.js"></script>
+<script src="src/data/strings.js"></script>
 <script src="src/utils/helpers.js"></script>
 <script src="src/utils/storage.js"></script>
+<script src="src/ui/category-selector.js"></script>
 <script src="src/ui/renderer.js"></script>
 <script src="src/ui/drag-drop.js"></script>
 <script src="src/core/game.js"></script>

@@ -64,11 +64,13 @@ window.GameApp = window.GameApp || {};
     this.classList.remove('drag-over');
     App.dragDropState.dragSrc.classList.remove('dragging');
 
-    if (srcIdx < dstIdx) {
-      list.insertBefore(App.dragDropState.dragSrc, this.nextSibling);
-    } else {
-      list.insertBefore(App.dragDropState.dragSrc, this);
-    }
+    App.animateListReorder(list, () => {
+      if (srcIdx < dstIdx) {
+        list.insertBefore(App.dragDropState.dragSrc, this.nextSibling);
+      } else {
+        list.insertBefore(App.dragDropState.dragSrc, this);
+      }
+    }, { source: 'drag-drop' });
 
     App.updateCardNumbers();
     App.clearValidationUI();
@@ -126,11 +128,13 @@ window.GameApp = window.GameApp || {};
       const srcIdx = items.indexOf(App.dragDropState.touchDragItem);
       const dstIdx = items.indexOf(target);
 
-      if (srcIdx < dstIdx) {
-        list.insertBefore(App.dragDropState.touchDragItem, target.nextSibling);
-      } else {
-        list.insertBefore(App.dragDropState.touchDragItem, target);
-      }
+      App.animateListReorder(list, () => {
+        if (srcIdx < dstIdx) {
+          list.insertBefore(App.dragDropState.touchDragItem, target.nextSibling);
+        } else {
+          list.insertBefore(App.dragDropState.touchDragItem, target);
+        }
+      }, { source: 'touch-drop' });
     }
 
     items.forEach(i => i.classList.remove('drag-over'));
