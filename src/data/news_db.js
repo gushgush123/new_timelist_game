@@ -1279,7 +1279,7 @@ GameApp.NEWS_DB = [
     "sortDate": 20220708,
     "category": "politics",
     "catLabel": "政治",
-    "image": "https://th.bing.com/th/id/R.4ad08e331b8f832531a1d3f9bef92d42?rik=dax9qufBa8qLmw&riu=http%3a%2f%2finews.gtimg.com%2fnewsapp_ls%2f0%2f15075732222_640330%2f0&ehk=xXDItHDYIoRmxWfPa71Mxu6CISAiKjRz9cjbrrscQpo%3d&risl=&pid=ImgRaw&r=0"
+    "image": "https://th.bing.com/th/id/R.d1595ef45551ce81aec7199819546002?rik=0aS%2fE3cwjLFwqA&riu=http%3a%2f%2fzdimg.lifeweek.com.cn%2fbg%2f20220726%2f1658816013827ioidl.jpg&ehk=FQll7WhCblcXbrGVmYg39hcfsMUwNUAXM0mM0Spx%2bDw%3d&risl=&pid=ImgRaw&r=0"
   },
 
   {
