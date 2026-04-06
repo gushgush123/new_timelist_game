@@ -58,7 +58,7 @@ GameApp.NEWS_DB = [
     "sortDate": 20010115,
     "category": "technology",
     "catLabel": "科技",
-    "image": "https://pic.nximg.cn/file/20201226/26753533_170914283176_2.jpg"
+    "image": "https://ts4.tc.mm.bing.net/th/id/OIP-C.Z1mXuH6LsnWwkMXjiUGhjwHaFN?rs=1&pid=ImgDetMain&o=7&rm=3"
   },
 
   {
