@@ -1269,5 +1269,49 @@ GameApp.NEWS_DB = [
     "category": "science",
     "catLabel": "科学",
     "image": "https://ts3.tc.mm.bing.net/th/id/OIP-C.bUZrHQ6kfQjPXDRajVy0nwHaE7?rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+
+  {
+    "id": 116,
+    "title": "安倍晋三遭枪击",
+    "desc": "日本前首相安倍晋三在奈良市进行街头演讲时遭枪击身亡，震惊全球。",
+    "date": "2022-07-08",
+    "sortDate": 20220708,
+    "category": "politics",
+    "catLabel": "政治",
+    "image": "https://th.bing.com/th/id/R.4ad08e331b8f832531a1d3f9bef92d42?rik=dax9qufBa8qLmw&riu=http%3a%2f%2finews.gtimg.com%2fnewsapp_ls%2f0%2f15075732222_640330%2f0&ehk=xXDItHDYIoRmxWfPa71Mxu6CISAiKjRz9cjbrrscQpo%3d&risl=&pid=ImgRaw&r=0"
+  },
+
+  {
+    "id": 117,
+    "title": "佩洛西访台",
+    "desc": "时任美国众议院议长南希·佩洛西乘专机抵达台湾进行访问，引发中美关系高度紧张。",
+    "date": "2022-08-02",
+    "sortDate": 20220802,
+    "category": "politics",
+    "catLabel": "政治",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.xNYbrRy5d9eTQmluDxnmcAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+
+  {
+    "id": 118,
+    "title": "石破茂下台",
+    "desc": "石破茂内阁在经历了众议院选举失利与自民党内部权力更迭后宣布辞职。",
+    "date": "2024-09-07",
+    "sortDate": 20240907,
+    "category": "politics",
+    "catLabel": "政治",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.KQy7BW--dv-X9DOvD4QCgAHaEj?rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+
+  {
+    "id": 119,
+    "title": "高市早苗上台",
+    "desc": "高市早苗在日本国会众参两院首相指名选举中当选第104任日本首相，成为日本历史上首位女性首相。",
+    "date": "2025-10-21",
+    "sortDate": 20251021,
+    "category": "politics",
+    "catLabel": "政治",
+    "image": "https://tse3.mm.bing.net/th/id/OIP._Q-E5FSrxqvo7RtRFFav6wHaEm?rs=1&pid=ImgDetMain&o=7&rm=3"
   }
 ];
