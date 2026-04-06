@@ -91,7 +91,7 @@ GameApp.NEWS_DB = [
     "sortDate": 20011211,
     "category": "economy",
     "catLabel": "经济",
-    "image": "http://inews.gtimg.com/newsapp_match/0/14291583233/0.jpg"
+    "image": "https://ts1.tc.mm.bing.net/th/id/OIP-C.uMoMCYHZq4wP7J56LMjWywHaE2?rs=1&pid=ImgDetMain&o=7&rm=3"
   },
 
   {
@@ -1279,7 +1279,7 @@ GameApp.NEWS_DB = [
     "sortDate": 20220708,
     "category": "politics",
     "catLabel": "政治",
-    "image": "https://th.bing.com/th/id/R.d1595ef45551ce81aec7199819546002?rik=0aS%2fE3cwjLFwqA&riu=http%3a%2f%2fzdimg.lifeweek.com.cn%2fbg%2f20220726%2f1658816013827ioidl.jpg&ehk=FQll7WhCblcXbrGVmYg39hcfsMUwNUAXM0mM0Spx%2bDw%3d&risl=&pid=ImgRaw&r=0"
+    "image": "https://ts1.tc.mm.bing.net/th/id/R-C.d1595ef45551ce81aec7199819546002?rik=0aS%2fE3cwjLFwqA&riu=http%3a%2f%2fzdimg.lifeweek.com.cn%2fbg%2f20220726%2f1658816013827ioidl.jpg&ehk=FQll7WhCblcXbrGVmYg39hcfsMUwNUAXM0mM0Spx%2bDw%3d&risl=&pid=ImgRaw&r=0"
   },
 
   {
