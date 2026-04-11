@@ -1,6 +1,8 @@
 # 【Trae&AI项目】时间轴挑战 · 新闻排序游戏（不喜轻喷QAQ）
 
 纯原生 HTML/CSS/JavaScript 实现的时间线排序小游戏：从新闻库抽题 → 拖拽排序 → 提交校验 → 评分与排行榜记录。项目不依赖任何第三方库，采用 `window.GameApp` 命名空间进行模块化组织，适合快速部署与二次开发。
+点击链接即可游玩：
+ https://gushgush123.github.io/new_timelist_game/
 
 ## 快速上手
 
